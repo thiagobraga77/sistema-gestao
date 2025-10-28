@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migrations</title>
+</head>
+<body>
+    <h1>Migrations</h1>
+    <h2>Comandos básicos</h2>
+    <ul>
+        <li>
+            Status => php artisan migrate:status
+            <p>Com esse comando conseguimos verificar as
+                situações das Migrations, se foram executadas ou ainda
+                estão com alguma pendência.
+            </p>
+        </li>
+        <li>Reset => php artisan make:reset
+            <p>Ele vai reverter todas as migrações do banco, da migração mais atual para a mais
+                antiga, ou seja, faz com que o banco de dados volte para o estado inicial,
+                antes da execução de todas as migrations. É executado o método down
+            </p>
+        </li>
+        
+        
+        <li>
+            Refresh => php artisan make:refresh
+            <p>Semelhante ao reset, reverte todas as migrations, executando o método down
+            de cada uma, e na sequência executa o método migration. Reiniciando o banco de dados.
+        </p>
+        </li>
+        <li>
+           Fresh => php artisan make:fresh 
+           <p>Faz o Drop de todos os objetos do banco de dados + o migrate
+            para recriar os objetos.
+           </p>
+        </li>
+    </ul>
+
+</body>
+</html>

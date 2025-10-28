@@ -1,0 +1,33 @@
+# Created by https://www.toptal.com/developers/gitignore/api/laravel
+# Edit at https://www.toptal.com/developers/gitignore?templates=laravel
+
+### Laravel ###
+/bootstrap/cache/
+/bootstrap/ssr/
+/node_modules/
+/public/build/
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/
+/storage/framework/
+/storage/logs/
+/vendor/
+
+.DS_Store
+.env
+.env.backup
+.env.development
+.env.example
+.env.local
+.env.production
+.env.staging
+.env.testing
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+phpunit.xml
+yarn-error.log
+
+# End of https://www.toptal.com/developers/gitignore/api/laravel
