@@ -75,3 +75,15 @@ class FornecedorController extends Controller
             return redirect()->route('app.fornecedor');
         }
 }
+
+/*
+Controllers 
+
+index() ->  Exibir lista de registros 
+create() -> Exibir formulário de criação de registros
+store() -> receber formulário de criação do registro
+show() -> exibir registro específico
+edit() -> exibir formulário de edição do registro
+update() -> receber formulário de edição do registro
+destroy() -> receber dados para remoção do registro
+*/
