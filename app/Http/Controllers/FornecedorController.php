@@ -86,4 +86,4 @@ show() -> exibir registro específico
 edit() -> exibir formulário de edição do registro
 update() -> receber formulário de edição do registro
 destroy() -> receber dados para remoção do registro
-*
+*/
