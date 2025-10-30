@@ -10,9 +10,13 @@ class ProdutoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        echo 'Index';
+        $produtos = Produto::paginate(10);
+        
+        
+        
+    return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
     /**
@@ -63,3 +67,14 @@ class ProdutoController extends Controller
         //
     }
 }
+/*
+Controllers 
+
+index() ->  Exibir lista de registros 
+create() -> Exibir formulário de criação de registros
+store() -> receber formulário de criação do registro
+show() -> exibir registro específico
+edit() -> exibir formulário de edição do registro
+update() -> receber formulário de edição do registro
+destroy() -> receber dados para remoção do registro
+*/

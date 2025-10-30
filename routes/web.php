@@ -47,13 +47,15 @@ Route::middleware( 'autenticacao:padrao,visitante')->prefix('/app')->group(funct
     Route::get('/fornecedor/excluir/{id}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
     
     // Produtos
-    //  Route::resource('produto', ProdutoController::class)->names([
+     Route::resource('produto', ProdutoController::class);
+    // ->names([
     //     'index' => 'app.produto'
     // ]);
     // Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
     // Route::get('/produto/create', [ProdutoController::class, 'create'])->name('app.produto.create');
 
 });
+// Exemplo em routes/web.php
 
 Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
     
