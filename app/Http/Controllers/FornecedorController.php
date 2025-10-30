@@ -11,6 +11,7 @@ class FornecedorController extends Controller
         return view('app.fornecedor.index');
     }
     public function listar(Request $request){
+        
     $fornecedores = Fornecedor::where('nome', 'like', $request->input('nome').'%')
         ->where('site', 'like', $request->input('site').'%')
         ->where('uf', 'like', $request->input('uf').'%')
@@ -86,4 +87,18 @@ show() -> exibir registro específico
 edit() -> exibir formulário de edição do registro
 update() -> receber formulário de edição do registro
 destroy() -> receber dados para remoção do registro
+*/
+
+/*
+Métodos HTTP
+Os métodos GET, POST, PUT, PATCH e DELETE
+são métodos do protocolo HTTP usados para
+interagir com recursos na web. GET
+é para buscar dados, POST é para
+criar novos recursos, PUT é para substituir
+um recurso inteiro, PATCH é para atualizar parcialmente 
+um recurso e DELETE é para removê-lo
+
+
+
 */
