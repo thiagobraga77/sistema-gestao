@@ -15,9 +15,7 @@ class ProdutoController extends Controller
     {
         // index-> exibir lista de registros
         $produtos = Produto::paginate(10);
-        
-        
-        
+    
     return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
 
@@ -36,7 +34,17 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // store -> Receber formulário de criação do registro
+        // outra maneira:
+        // $produto = new Produto();
+        // $nome = $request->get('nome');
+        // $descricao = $request->get('descricao');
+        // $nome = strtoupper($nome);
+        // $produto->nome = $nome;
+        // $produto->descricao = $descricao;
+        // $produto->save();
+        Produto::create($request->all());
+        return redirect()->route('produto.index');
     }
 
     /**
