@@ -90,7 +90,13 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        // update() -> receber formulário de edição do registro
+        // Put -> a requisição http deve atualizar o objeto completo
+        // Patch -> atualizações parciais, atributos específicos
+        $request->all(); //payload -> dados enviados em uma requisição http
+        $produto; //instância do objeto no estado anterior
+        $produto->update($request->all());
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
