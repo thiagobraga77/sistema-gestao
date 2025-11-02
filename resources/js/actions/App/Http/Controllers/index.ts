@@ -5,6 +5,7 @@ import LoginController from './LoginController'
 import HomeController from './HomeController'
 import ClienteController from './ClienteController'
 import FornecedorController from './FornecedorController'
+import ProdutoController from './ProdutoController'
 import TesteController from './TesteController'
 import Settings from './Settings'
 import Auth from './Auth'
@@ -17,6 +18,7 @@ const Controllers = {
     HomeController: Object.assign(HomeController, HomeController),
     ClienteController: Object.assign(ClienteController, ClienteController),
     FornecedorController: Object.assign(FornecedorController, FornecedorController),
+    ProdutoController: Object.assign(ProdutoController, ProdutoController),
     TesteController: Object.assign(TesteController, TesteController),
     Settings: Object.assign(Settings, Settings),
     Auth: Object.assign(Auth, Auth),
