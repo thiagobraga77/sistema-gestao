@@ -90,7 +90,13 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        // update() -> receber formulário de edição do registro
+        // Put -> a requisição http deve atualizar o objeto completo
+        // Patch -> atualizações parciais, atributos específicos
+        $request->all(); //payload -> dados enviados em uma requisição http
+        $produto; //instância do objeto no estado anterior
+        $produto->update($request->all());
+        return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
 
     /**
@@ -98,17 +104,19 @@ class ProdutoController extends Controller
      */
     public function destroy(Produto $produto)
     {
-        //
+        // Destroy -> receber dados para remoção do registro
+        $produto->delete();
+        return redirect()->route('produto.index', ['produto' => $produto->id]);
     }
 }
 /*
 Controllers 
 
-index() ->  Exibir lista de registros 
-create() -> Exibir formulário de criação de registros
-store() -> receber formulário de criação do registro
-show() -> exibir registro específico
-edit() -> exibir formulário de edição do registro
-update() -> receber formulário de edição do registro
-destroy() -> receber dados para remoção do registro
+get -> index() ->  Exibir lista de registros 
+get -> create() -> Exibir formulário de criação de registros
+post -> store() -> receber formulário de criação do registro
+get -> show() -> exibir registro específico
+get -> edit() -> exibir formulário de edição do registro
+put | patch -> update() -> receber formulário de edição do registro
+delete -> destroy() -> receber dados para remoção do registro
 */
