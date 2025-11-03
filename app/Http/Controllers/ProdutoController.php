@@ -82,7 +82,9 @@ class ProdutoController extends Controller
     {
         // edit() -> exibir formulário de edição do registro
         $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]); 
+        // return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]); 
+        return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]); 
+
     }
 
     /**
@@ -119,4 +121,7 @@ get -> show() -> exibir registro específico
 get -> edit() -> exibir formulário de edição do registro
 put | patch -> update() -> receber formulário de edição do registro
 delete -> destroy() -> receber dados para remoção do registro
+
+create relacionado com store;
+edit relacionado com update;
 */
