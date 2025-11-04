@@ -30,8 +30,17 @@ class ProdutoDetalheController extends Controller
      */
     public function store(Request $request)
     {
-        ProdutoDetalheController::create($request->all());
-        echo 'Cadastro realizado com sucesso';
+        $dadosValidados = $request->validate([
+            'produto_id'  => 'required|integer', // Adicione 'exists:produtos,id' se quiser garantir que o ID do produto exista
+            'comprimento' => 'required|numeric',
+            'largura'     => 'required|numeric',
+            'altura'      => 'required|numeric',
+            'unidade_id'  => 'required|integer|exists:unidades,id', // Garante que a unidade exista
+        ]);
+
+        ProdutoDetalhe::create($dadosValidados);
+
+        return redirect()->route('produto-detalhe.create')->with('sucesso', 'Cadastro realizado com sucesso!');
     }
 
     /**
@@ -45,17 +54,30 @@ class ProdutoDetalheController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        $unidades = Unidade::all();
+        
+        return view('app.produto_detalhe.edit', ['produto_detalhe' => $produtoDetalhe, 'unidades' => $unidades]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        // 1. Valide os dados
+        $dadosValidados = $request->validate([
+            'produto_id'  => 'required|integer',
+            'comprimento' => 'required|numeric',
+            'largura'     => 'required|numeric',
+            'altura'      => 'required|numeric',
+            'unidade_id'  => 'required|integer|exists:unidades,id',
+        ]);
+
+        $produtoDetalhe->update($dadosValidados);
+
+        echo 'Atualização foi realizada com sucesso'; 
     }
 
     /**
