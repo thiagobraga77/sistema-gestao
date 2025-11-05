@@ -16,7 +16,7 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         // index-> exibir lista de registros
-        $produtos = Item::paginate(10);
+        $produtos = Item::with(['itemDetalhe'])->paginate(10);
         /*
         foreach($produtos as $key => $produto){
             
@@ -141,4 +141,15 @@ delete -> destroy() -> receber dados para remoção do registro
 
 create relacionado com store;
 edit relacionado com update;
+*/
+
+/* 
+Duas técnicas importantes para gerenciar um aplicativo que 
+carrega relacionamentos entre modelos.
+
+Lazy Loading -> Carregamento lento, preguiçoso. Carrega as relações apenas
+quando são explicitamente acessadas. Exemplo, um Post com muitos comments, ele só 
+serão carregados quando o acessamos.
+Eager Loading -> Carregamento ansioso; Carrega as relações
+muito antes de serem necessárias. Feito usando o with()
 */
