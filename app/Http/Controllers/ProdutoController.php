@@ -16,7 +16,7 @@ class ProdutoController extends Controller
     {
         // index-> exibir lista de registros
         $produtos = Produto::paginate(10);
-
+        /*
         foreach($produtos as $key => $produto){
             
             $produtoDetalhe = ProdutoDetalhe::where('produto_id', $produto->id)->first();
@@ -30,6 +30,7 @@ class ProdutoController extends Controller
 
             }
         }
+        */
     
     return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }

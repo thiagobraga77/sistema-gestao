@@ -41,9 +41,9 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
-                                <th>{{ $produto->comprimento ?? '' }}</th>
-                                <th>{{ $produto->altura ?? '' }}</th>
-                                <th>{{ $produto->largura ?? '' }}</th>
+                                <th>{{ $produto->produtoDetalhe->comprimento ?? '' }}</th>
+                                <th>{{ $produto->produtoDetalhe->altura ?? '' }}</th>
+                                <th>{{ $produto->produtoDetalhe->largura ?? '' }}</th>
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></td>
                                 <td>
                                     <form id="form_{{ $produto->id }}" method="POST" action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
