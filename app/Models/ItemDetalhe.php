@@ -14,6 +14,6 @@ class ItemDetalhe extends Model
         // fk item_id como referência
         // belongsTo -> Pertence "a"
         // produto_detalhes pertence a produtos;
-
+        // belongsTo -> é usado no modelo do lado "filho" que pertence a um único pai.
     }   
 }
