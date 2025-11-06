@@ -16,7 +16,7 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         // index-> exibir lista de registros
-        $produtos = Item::with(['itemDetalhe'])->paginate(10);
+        $produtos = Item::with(['itemDetalhe', 'fornecedor'])->paginate(10);
         /*
         foreach($produtos as $key => $produto){
             
