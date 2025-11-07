@@ -26,13 +26,16 @@
                         <tr>
                             <th>ID Pedido</th>
                             <th>Cliente</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
                         @foreach ($pedidos as $pedido)
                             <tr>
-                                <td>{{ $pedido->nome }}</td>
+                                <td>{{ $pedido->id }}</td>
                                 <td>{{ $pedido->cliente_id }}</td>
                                 <td><a href="{{ route('pedido.show', ['pedido' => $pedido->id]) }}">Visualizar</a></td>
                                 <td>
@@ -49,15 +52,7 @@
                 </table>
 
                 {{ $pedidos->appends($request)->links() }}
-                {{-- <br>
-                {{ $pedidos->count() }} - Total de registros por página
-                <br>
-                {{ $pedidos->total() }} - Total de registros por consulta
-                <br>
-                {{ $pedidos->firstItem() }} - Número do primeiro registro da página
-                <br>
-                {{ $pedidos->lastItem() }} - Número do último registro da página --}}
-
+         
                 <br>
                 Exibindo {{ $pedidos->count() }} pedidos de  {{ $pedidos->total() }} (de {{ $pedidos->firstItem() }} a {{ $pedidos->lastItem() }})
             </div>
