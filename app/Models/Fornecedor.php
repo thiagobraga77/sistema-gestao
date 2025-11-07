@@ -46,4 +46,11 @@ class Fornecedor extends Model
      extra:
      foreach($fornecedores as $f) {echo $f->nome; echo ' - '; }
     */
+    // hasMany -> tem muitos
+    public function produtos() {
+        return $this->hasMany('App\Models\Item', 'fornecedor_id', 'id');
+        // return $this->hasMany('App\Models\Item');
+
+    }
+
 }
