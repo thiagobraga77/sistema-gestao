@@ -5,11 +5,14 @@ use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\TesteController;
 use App\Http\Middleware\LogAcessoMiddleware;
+use App\Models\Pedido;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\PrincipalController;
@@ -37,7 +40,6 @@ Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contat
 Route::middleware( 'autenticacao:padrao,visitante')->prefix('/app')->group(function(){
     Route::get('/home', [HomeController::class, 'index'])->name('app.home');
     Route::get('/sair', [LoginController::class, 'sair'])->name('app.sair');
-    Route::get('/cliente', [ClienteController::class, 'index'])->name('app.cliente');
    
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
@@ -55,6 +57,10 @@ Route::middleware( 'autenticacao:padrao,visitante')->prefix('/app')->group(funct
     // ]);
     // Route::get('/produto', [ProdutoController::class, 'index'])->name('app.produto');
     // Route::get('/produto/create', [ProdutoController::class, 'create'])->name('app.produto.create');
+    Route::resource('cliente',  ClienteController::class);
+    Route::resource('pedido', PedidoController::class);
+    Route::resource('pedido_produto', PedidoProdutoController::class);
+
 
 });
 // Exemplo em routes/web.php
