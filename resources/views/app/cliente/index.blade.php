@@ -31,7 +31,7 @@
                     <tbody>
                         @foreach ($clientes as $cliente)
                             <tr>
-                                <td>{{ $clientes->nome }}</td>
+                                <td>{{ $cliente->nome }}</td>
                                 <td><a href="{{ route('cliente.show', ['cliente' => $cliente->id]) }}">Visualizar</a></td>
                                 <td>
                                     <form id="form_{{ $cliente->id }}" method="POST" action="{{ route('cliente.destroy', ['cliente' => $cliente->id]) }}">
