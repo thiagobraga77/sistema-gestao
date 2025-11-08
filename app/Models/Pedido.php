@@ -10,4 +10,15 @@ class Pedido extends Model
     {
         return $this->belongsTo(\App\Models\Cliente::class);
     }
+    public function produtos() {
+        // return $this->belongsToMany('App\Models\Produto', 'pedidos_produtos');
+        // relacionamento de muitos para muitos;
+        return $this->belongsToMany('App\Models\Item', 'pedidos_produtos', 'pedido_id', 'produto_id')->withPivot('id','created_at', 'updated_at');
+        /*
+        1 - Modelo do relacionamento NxN em relação ao Modelo que estamos implementando
+        2 - É a tabela auxiliar que armazena os registros de relacionamento
+        3 - Representa o nome da FK da tabela mapeada pelo modelo na tabela de relacionamentos
+        4 - Representa o nome de FK da tabela mapeada pelo model utilizado no relacionamento que estamos implementando
+        */
+    }
 }

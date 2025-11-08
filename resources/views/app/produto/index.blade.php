@@ -50,13 +50,26 @@
                                 <th>{{ $produto->itemDetalhe->largura ?? '' }}</th>
                                 <td><a href="{{ route('produto.show', ['produto' => $produto->id]) }}">Visualizar</a></td>
                                 <td>
-                                    <form id="form_{{ $produto->id }}" method="POST" action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
+                                    <form id="form_{{ $produto->id }}" method="POST"
+                                        action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
                                         @method('DELETE')
                                         @csrf
-                                        <a href="#" onclick="document.getElementById('form_{{ $produto->id }}').submit()">Excluir</a>
+                                        <a href="#"
+                                            onclick="document.getElementById('form_{{ $produto->id }}').submit()">Excluir</a>
                                     </form>
                                 </td>
                                 <td><a href="{{ route('produto.edit', ['produto' => $produto->id]) }}">Editar</a></td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="12">
+                                    <p>Pedidos</p>
+                                    @foreach ($produto->pedidos as $pedido)
+                                        <a href="{{ route('pedido-produto.create', ['pedido' => $pedido->id]) }}">
+                                        Pedido: {{ $pedido->id }}
+                                        </a>
+                                    @endforeach
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -73,7 +86,8 @@
                 {{ $produtos->lastItem() }} - Número do último registro da página --}}
 
                 <br>
-                Exibindo {{ $produtos->count() }} produtos de  {{ $produtos->total() }} (de {{ $produtos->firstItem() }} a {{ $produtos->lastItem() }})
+                Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }} (de {{ $produtos->firstItem() }} a
+                {{ $produtos->lastItem() }})
             </div>
         </div>
     </div>
