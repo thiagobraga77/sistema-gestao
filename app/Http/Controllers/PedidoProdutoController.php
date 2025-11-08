@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Pedido;
 use App\Models\Produto;
 
+
 class PedidoProdutoController extends Controller
 {
     /**
@@ -93,14 +94,14 @@ class PedidoProdutoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pedido $pedido, Produto $produto)
+    public function destroy(PedidoProduto $pedidoProduto, $pedido_id)
     {
         /*print_r($pedido->getAttributes());
         echo '<hr>';
         print_r($produto->getAttributes());
         */
 
-        echo $pedido->id.' - '.$produto->id;
+        // echo $pedido->id.' - '.$produto->id;
         //convencional
         /*PedidoProduto::where([
             'pedido_id' => $pedido->id,
@@ -108,8 +109,9 @@ class PedidoProdutoController extends Controller
         ])->delete();
         */
         //detach -> delete pelo relacionamento
-        $pedido->produtos()->detach($produto->id);
+        // $pedido->produtos()->detach($produto->id);
         // pedido_id
-        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
+        $pedidoProduto->delete();
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido_id]);
     }
 }
